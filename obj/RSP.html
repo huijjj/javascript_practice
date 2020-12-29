@@ -1,0 +1,83 @@
+<script>
+    // 0 == sissors, 1 == rock, 2 == paper
+    let com = (Math.floor(Math.random() * 10)) % 3; // generate random choice for computer
+    let user = prompt("Choose among Rock, Paper, Sissors"); // get user input
+
+    let str = "You chose ";
+
+    switch(user) // check and conver user input into integer
+    {
+        case "Rock" :
+        case "rock" :
+            str += "rock";
+            user = 1;
+            break;
+        case "Paper" :
+        case "paper" :
+            str += "paper";
+            user = 2;
+            break;
+        case "Sissors" :
+        case "sissors" :
+            str += "sissors";
+            user = 0;
+            break;
+        default :
+            alert("Wrong input, try again!");
+            location.reload();
+    }
+
+    document.write(`<h1 align = "center">`); // print choices of user and computer
+    document.write(str + "<br>");
+    switch(com)
+    {
+        case 0:
+            document.write("Computer chose sissors");
+            break;
+        case 1:
+            document.write("Computor chose rock");
+            break;
+        case 2:
+            document.write("Computor chose paper");
+            break;
+    }
+    document.write(`</h1><br>`);
+
+    //compute result
+    let result = (user === com) ? "draw" : "lose";
+    switch(user)
+    {
+        case 0:
+            if(com === 2)
+            {
+                result = "win";
+            }
+            break;
+        case 1:
+            if(com === 0)
+            {
+                result = "win";
+            }
+            break;
+        case 2:
+            if(com === 1)
+            {
+                result = "win";
+            }
+            break;
+    }
+    if(result === "win")
+    {
+        document.write(`<p style = "font-size : 48px; color : blue", align = "center">`);
+    }
+    else if(result === "lose")
+    {
+        document.write(`<p style = "font-size : 48px; color : red", align = "center">`);
+            
+    }
+    else
+    {
+        document.write(`<p style = "font-size : 48px", align = "center">`);
+    }
+    document.write(result + "</p>");
+</script>
