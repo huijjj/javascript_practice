@@ -1,0 +1,99 @@
+<script>
+    "use strict"
+    // example of user defined object
+    function constructor(color, price)
+    {
+        let tv = new Object();
+        tv.color = color;
+        tv.price = price;
+        tv.info = function()
+        {
+            console.log("Color : ", tv.color);
+            console.log("Price : ", tv.price);
+        }
+        return tv;
+    }
+    let new_tv = constructor("black", 1000000);
+    new_tv.info();
+
+    // Date object example
+    let today = new Date;
+    document.write(`<h1 align = "center">` + today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate() + "</h1>");
+    let dday = new Date(2021, 0, 1);
+    document.write('<p align = "center">');
+    document.write(Math.ceil(((dday.getTime() - today.getTime()) / (60 * 1000 * 60 * 24))), " days left until 2021");
+    document.write('</p>');
+    
+
+    // Math object example
+    function printArray(arr)
+    {
+        document.write('<p align = "center", style = "font-size : 24px">');
+        for(let i = 0; i < arr.length; i++)
+        {
+            document.write(arr[i] + " ");
+        }
+        document.write('</p>')
+    }
+    let array = [];
+    for(let i = 0; i < 10; i++)
+    {
+        array.push(Math.floor(Math.random() * 10));
+    }
+    document.write("Array before sorting:");
+    printArray(array);
+    document.write("Array after sorting:");
+    array = array.sort();
+    printArray(array);
+
+    // loop & selection example
+    let result = "This array has ";
+    for(let i = 0; i < 10; i++)
+    {
+        let count = 0;
+        for(let j = 0; j < 10; j++)
+        {
+            if(array[j] === i)
+            {
+                count++;
+            }
+        }
+        if(count !== 0)
+        {
+            switch(count)
+            {
+                case 1:
+                    result += "one ";
+                    break;
+                case 2:
+                    result += "two ";
+                    break;
+                case 3:
+                    result += "three ";
+                    break;
+                case 4:
+                    result += "four ";
+                    break;
+                case 5:
+                    result += "five ";
+                    break;
+                case 6:
+                    result += "six ";
+                    break;
+                case 7:
+                    result += "seven ";
+                    break;
+                case 8:
+                    result += "eight ";
+                    break;
+                case 9:
+                    result += "nine ";
+                    break;
+            }
+            result += i;
+            result += " ";
+        }
+    }
+    document.write(result);
+
+</script>
