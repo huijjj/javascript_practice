@@ -1,0 +1,73 @@
+<script>
+    // code for PDA accepting {w | w = 0^n1^n, n is a integer bigger than 0}
+
+    let arr = new String(prompt("Enter binary string"));
+    
+    for(i in arr) // check if input string is valid
+    {
+        if(arr[i] != 0 && arr[i] != 1)
+        {
+            alert(arr + " is not a binary string try again!");
+            location.reload();
+        }
+    }
+    
+    let res = "The input string " + arr;
+
+    let st = "q";
+    let stack = "Z";
+    let inputSymbol;
+    let stackSymbol;
+    document.write(`<p align = "center", style = "font-size : 24">`);
+    document.write("(state, remaining input string, stack)", "<br><br>");
+    document.write("(", st, ",", arr, ",", stack,")");
+
+    while(arr.length != 0) // run PDA
+    {
+        inputSymbol = arr.charAt(0);
+        arr = arr.substr(1, arr.length - 1);
+        stackSymbol = stack.charAt(0);
+        stack = stack.substr(1, stack.length - 1);
+
+        if(st == "q")
+        {
+            if(inputSymbol == 0 && stackSymbol == "Z")
+            {
+                stack += "XZ";
+            }
+            else if(inputSymbol == 0 && stackSymbol == "X")
+            {
+                stack = ("XX" + stack);
+            }
+            else if(inputSymbol == 1 && stackSymbol == "X")
+            {
+                st = "f";
+            }
+            else
+            {
+                arr = inputSymbol + arr;
+                break;
+            }
+        }
+        else
+        {
+            if(!((inputSymbol == 1) && (stackSymbol == "X")))
+            {
+                arr = inputSymbol + arr;
+                break;
+            }
+        }
+        document.write("->", "(", st, ",", arr, ",", stack,")");
+    }
+
+    if(st == "f" && arr.length == 0)
+    {
+        res += " is in the laguage of PDA"
+    }
+    
+    else
+    {
+        res += " is not in the laguage of PDA"
+    }
+    document.write("<br><br>" + res + "</p>");
+</script>
