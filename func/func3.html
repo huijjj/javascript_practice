@@ -1,0 +1,37 @@
+<head>
+    <script>
+        let current = 0;
+        function change(mode)
+        {
+            if(current == 0 && mode == 1)
+            {
+                document.getElementById("prev").removeAttribute("disabled");
+            }
+            else if(current == 1 && mode == -1)
+            {
+                document.getElementById("prev").setAttribute("disabled", "disabled");
+            }
+            else if(current == 2 && mode == 1)
+            {
+                document.getElementById("next").setAttribute("disabled", "disabled");
+            }
+            else if(current == 3 && mode == -1)
+            {
+                document.getElementById("next").removeAttribute("disabled");
+            }
+            current += mode;
+            document.getElementById("photo").setAttribute("src", "images/yezi" + current + ".jpg");
+        }
+    </script>
+</head>
+<body>
+    <div id = "gallery", align = "center">
+        <p>
+            <img src = "images/yezi0.jpg", id = "photo", alt= "", width = "400", height = "600">
+        </p>
+        <p>
+            <button id = "prev", onclick = "change(-1)", disabled = "disabled">prev</button>
+            <button id = "next", onclick = "change(1)">next</button>
+        </p>
+    </div>
+</body>

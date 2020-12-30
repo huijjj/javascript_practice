@@ -1,0 +1,35 @@
+<head>
+    <script>
+        function constructor(name, height, weight)
+        {
+            this.name = name;
+            this.height = height;
+            this.weight = weight;
+            this.info = function()
+            {
+                document.write("Name: " + name, "<br>Height: " + height, "<br>Weight: " + weight, "<br>");
+                let BMI = weight / (Math.pow(height / 100, 2));
+                document.write("<br>BMI: " + BMI, "<br>");
+
+                if(BMI >= 23)
+                {
+                    document.write("You are too fat!");
+                }
+                else if(BMI >= 18.5)
+                {
+                    document.write("You are fine :)");
+                }
+                else
+                {
+                    document.write("You are too skinny. You should eat more");
+                }
+            }
+        }
+
+        let man = new constructor(prompt("Enter name"), prompt("Enter height in cm"), prompt("Enter weight in kg"));
+    </script>
+</head>
+<body>
+    <p>BMI calculator<br><br></p>
+    <button onclick = "man.info()">get result</button>
+</body>
