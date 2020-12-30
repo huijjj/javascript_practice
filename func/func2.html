@@ -1,0 +1,52 @@
+<head>
+    <script>
+        let members = [["hui", "1234"]];
+        function signIn()
+        {
+            let id = prompt("enter ID");
+            let pw = prompt("enter PASSWORD");
+            members.push([id, pw]);
+            alert("Your ID: " + id + "\n" + "Your PASS: " + pw);
+        }
+        function logIn()
+        {
+            let id = prompt("enter ID");
+            let pw = prompt("enter PASSWORD");
+            let found = 0;
+            for(i in members)
+            {
+                if(members[i][0] == id && members[i][1] == pw)
+                {
+                    alert("Welcome " + id);
+                    found = 1;
+                    document.getElementById("text").innerText = ("User: " + id);
+                    document.getElementById("logOut").removeAttribute("disabled");
+                    document.getElementById("logIn").setAttribute("disabled", "disabled");
+                    document.getElementById("signIn").setAttribute("disabled", "disabled");
+                }
+            }
+            if(found == 0)
+            {    
+                alert("Invalid ID or PASSWORD");
+            }
+        }
+        function logOut()
+        {
+            if(confirm("Log out?"))
+            {
+                document.getElementById("text").innerText = "";
+                document.getElementById("signIn").removeAttribute("disabled");
+                document.getElementById("logIn").removeAttribute("disabled");
+                document.getElementById("logOut").setAttribute("disabled", "disabled"); 
+            }
+        }
+    </script>
+</head>
+<body>
+    <p id = "text", align = "center"></p>
+    <div id = "buttons", align = "center">
+        <button id = "logIn", onclick = "logIn()">log in</button>
+        <button id = "signIn", onclick = "signIn()">sign in</button>
+        <button id = "logOut", onclick = "logOut()", disabled = "disabled">log out</button>
+    </div>
+</body>
