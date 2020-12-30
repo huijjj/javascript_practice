@@ -1,0 +1,43 @@
+<head>
+    <script>
+        document.write(`<div id = "top">`,`<p><br></p>`, `</div>`);
+        document.write(`<p align = "center">`);
+        foo(); // normal functions support hoisting
+        function foo()
+        {
+            document.write("Hello world!", "<br>");   
+        }
+        let bar = function() 
+        {
+            document.write("Heyya, world!", '<br>');
+        }
+        bar(); // anonymous function doesn't
+        document.write(`</p>`);
+        
+        let colors = ["white", "yellow", "aqua", "purple", "blue", "black", "magenta", "red", "green"];
+        let current = 0;
+        function changeColor()
+        {
+            let next_color;
+            while(true)
+            {
+                next_color = (Math.floor(Math.random() * 10)) % colors.length;
+                if(current != next_color)
+                {
+                    current = next_color;
+                    break;
+                }
+            }
+            let top = document.getElementById("top");
+            let bottom = document.getElementById("bottom");
+            top.style.backgroundColor = colors[current];
+            bottom.style.backgroundColor = colors[current];
+        }
+    </script>
+</head>
+
+<body>
+    <div id = "bottom", align = "center">    
+        <button onclick = "changeColor()">CHANGE COLOR</button>
+    </div>
+</body>
